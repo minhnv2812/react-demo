@@ -1,7 +1,9 @@
-FROM node:carbon-alpine AS node_builder
+FROM node:alpine
 
-WORKDIR /app/webreactjs
-COPY . .
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+COPY ./ ./
 RUN npm install
 LABEL name="webreactjs" version="1.0"
-CMD ["npm start"]
+CMD ["npm", "run", "start"]
